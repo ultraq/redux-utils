@@ -1,0 +1,10 @@
+{
+	"extends": [
+		"eslint:recommended",
+		"ultraq"
+	],
+	"parserOptions": {
+		"ecmaVersion": 2018,
+		"sourceType": "module"
+	}
+}

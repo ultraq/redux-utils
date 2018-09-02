@@ -1,0 +1,42 @@
+{
+	"name": "@ultraq/redux-utils",
+	"version": "0.1.0",
+	"description": "A collection of wrappers/utilities for common functions in redux",
+	"author": "Emanuel Rabina <emanuelrabina@gmail.com> (http://www.ultraq.net.nz/)",
+	"license": "Apache-2.0",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ultraq/redux-utils.git"
+	},
+	"keywords": [
+		"redux",
+		"utilities"
+	],
+	"module": "redux-utils.es.js",
+	"main": "redux-utils.cjs.js",
+	"scripts": {
+		"lint": "eslint '*.js'",
+		"test": "npm run lint && jest",
+		"coverage": "cat ./coverage/lcov.info | coveralls",
+		"build": "npm run build:cjs && npm run build:es",
+		"build:cjs": "BABEL_ENV=cjs babel redux-utils.js --out-file redux-utils.cjs.js --source-maps",
+		"build:es": "BABEL_ENV=es babel redux-utils.js --out-file redux-utils.es.js --source-maps",
+		"prepublish": "npm run build"
+	},
+	"peerDependencies": {
+		"redux": "^4.0.0"
+	},
+	"devDependencies": {
+		"babel-cli": "^6.26.0",
+		"babel-preset-env": "^1.7.0",
+		"@ultraq/object-utils": "^1.3.0",
+		"coveralls": "^2.12.0",
+		"eslint": "^5.5.0",
+		"eslint-config-ultraq": "^2.0.1",
+		"jest": "^23.5.0",
+		"redux": "^4.0.0"
+	},
+	"engines": {
+		"node": ">=8.0.0"
+	}
+}
