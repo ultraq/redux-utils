@@ -14,6 +14,8 @@
  * limitations under the License.
  */
 
+import {equals} from '@ultraq/object-utils';
+
 /**
  * Observe the store for changes, passing the value picked out by the `select`
  * function to the handler.
@@ -23,15 +25,15 @@
  * @param {Store} store
  * @param {Function} select
  * @param {Function} handler
- * @return {Unsubscribe}
+ * @return {Function}
  *   A function that lets the observer unsubscribe from store changes.
  */
 export function observe(store, select, handler) {
 
-	let currentValue;
+	let currentValue = select(store.getState());
 	return store.subscribe(function() {
 		let nextValue = select(store.getState());
-		if (nextValue !== currentValue) {
+		if (!equals(nextValue, currentValue)) {
 			currentValue = nextValue;
 			handler(currentValue);
 		}

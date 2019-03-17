@@ -12,8 +12,6 @@ A collection of wrappers/utilities for common functions in redux.
 Installation
 ------------
 
-Via npm:
-
 ```
 npm install @ultraq/redux-utils
 ```
