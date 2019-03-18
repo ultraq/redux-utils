@@ -10,7 +10,8 @@
 	},
 	"keywords": [
 		"redux",
-		"utilities"
+		"utilities",
+		"observe"
 	],
 	"module": "redux-utils.es.js",
 	"main": "redux-utils.cjs.js",
