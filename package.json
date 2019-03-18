@@ -15,7 +15,7 @@
 	"module": "redux-utils.es.js",
 	"main": "redux-utils.cjs.js",
 	"scripts": {
-		"lint": "eslint '*.js'",
+		"lint": "eslint \"*.js\"",
 		"test": "npm run lint && jest",
 		"coverage": "cat ./coverage/lcov.info | coveralls",
 		"build": "npm run build:cjs && npm run build:es",
@@ -24,7 +24,7 @@
 		"prepublish": "npm run build"
 	},
 	"dependencies": {
-		"@ultraq/object-utils": "^2.0.0"
+		"@ultraq/object-utils": "^2.0.1"
 	},
 	"peerDependencies": {
 		"redux": "^4.0.0"
@@ -36,7 +36,7 @@
 		"coveralls": "^3.0.2",
 		"eslint": "^5.5.0",
 		"eslint-config-ultraq": "^2.0.1",
-		"jest": "^23.5.0",
+		"jest": "^24.5.0",
 		"redux": "^4.0.0"
 	},
 	"engines": {
