@@ -2,10 +2,9 @@
 redux-utils
 ===========
 
-[![Build Status](https://travis-ci.org/ultraq/redux-utils.svg?branch=master)](https://travis-ci.org/ultraq/redux-utils)
+[![Build Status](https://travis-ci.com/ultraq/redux-utils.svg?branch=master)](https://travis-ci.com/ultraq/redux-utils)
 [![Coverage Status](https://coveralls.io/repos/github/ultraq/redux-utils/badge.svg?branch=master)](https://coveralls.io/github/ultraq/redux-utils?branch=master)
 [![npm](https://img.shields.io/npm/v/@ultraq/redux-utils.svg?maxAge=3600)](https://www.npmjs.com/package/@ultraq/redux-utils)
-[![License](https://img.shields.io/github/license/ultraq/redux-utils.svg?maxAge=2592000)](https://github.com/ultraq/redux-utils/blob/master/LICENSE.txt)
 
 A collection of wrappers/utilities for common functions in redux.
 
