@@ -1,6 +1,6 @@
 {
 	"name": "@ultraq/redux-utils",
-	"version": "0.2.0",
+	"version": "0.3.0",
 	"description": "A collection of wrappers/utilities for common functions in redux",
 	"author": "Emanuel Rabina <emanuelrabina@gmail.com> (http://www.ultraq.net.nz/)",
 	"license": "Apache-2.0",

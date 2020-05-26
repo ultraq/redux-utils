@@ -17,6 +17,33 @@
 import {equals} from '@ultraq/object-utils';
 
 /**
+ * Create an initial state from JSON data in a DOM element.  Used for creating
+ * an object that is suitable for the `initialState` value of Redux's
+ * `createStore`.
+ * 
+ * @param {String} selector
+ *   A CSS selector for picking out the HTML element that contains the JSON data
+ *   to load.
+ * @param {String} [slice]
+ *   If the JSON data only represents a slice of the entire state, then specify
+ *   the name of the slice so that it can be set in the right place.
+ * @return {Object}
+ *   The JSON data converted to an object, or an empty object if no data could
+ *   be read.
+ */
+export function initialStateFromDom(selector, slice) {
+	let el = document.querySelector(selector);
+	if (el && el.textContent) {
+		let jsonData = el.textContent.trim();
+		if (jsonData) {
+			let data = JSON.parse(jsonData);
+			return slice ? {[slice]: data} : data;
+		}
+	}
+	return {};
+}
+
+/**
  * Observe the store for changes, passing the value picked out by the `select`
  * function to the handler.
  * 
