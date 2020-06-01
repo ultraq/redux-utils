@@ -15,6 +15,7 @@
  */
 
 /* eslint-env jest */
+import {__setMockJsonFromElement} from '@ultraq/dom-utils';
 import {
 	initialStateFromDom,
 	observe,
@@ -22,16 +23,12 @@ import {
 } from './redux-utils.js';
 
 import {navigate}    from '@ultraq/object-utils';
-import h             from 'hyperscript';
-import hh            from 'hyperscript-helpers';
 import {createStore} from 'redux';
-
-const {div} = hh(h);
 
 /**
  * Tests for the redux utilities.
  */
-describe('redux-utils', () => {
+describe('redux-utils', function() {
 
 	// A store with a reducer that always returns the action's state
 	let store;
@@ -46,30 +43,22 @@ describe('redux-utils', () => {
 
 	describe('#initialStateFromDom', function() {
 
-		function createTestElement(data) {
-			testDataEl = div('#test-data', data);
-			document.body.appendChild(testDataEl);
-		}
-
-		let testDataEl;
 		afterEach(function() {
-			testDataEl?.remove();
+			__setMockJsonFromElement(null);
 		});
 
 		test('JSON data loaded', function() {
-			let testData = {
+			let testData = __setMockJsonFromElement({
 				message: 'Hello!'
-			};
-			createTestElement(JSON.stringify(testData));
+			});
 			let result = initialStateFromDom('#test-data');
 			expect(result).toEqual(testData);
 		});
 
 		test('JSON data loaded into slice', function() {
-			let testData = {
+			let testData = __setMockJsonFromElement({
 				message: 'Hello!'
-			};
-			createTestElement(JSON.stringify(testData));
+			});
 			let result = initialStateFromDom('#test-data', 'slice');
 			expect(result).toEqual(expect.objectContaining({
 				slice: testData
@@ -82,7 +71,7 @@ describe('redux-utils', () => {
 		});
 
 		test('Empty object returned when element contains no content', function() {
-			createTestElement('');
+			__setMockJsonFromElement('');
 			let result = initialStateFromDom('#test-data');
 			expect(result).toEqual({});
 		});

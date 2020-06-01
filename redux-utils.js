@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-import {equals} from '@ultraq/object-utils';
+import {parseJsonFromElement} from '@ultraq/dom-utils';
+import {equals}               from '@ultraq/object-utils';
 
 /**
  * Create an initial state from JSON data in a DOM element.  Used for creating
@@ -33,7 +34,7 @@ import {equals} from '@ultraq/object-utils';
  */
 export function initialStateFromDom(selector, slice) {
 
-	let data = JSON.parse(document.querySelector(selector)?.textContent?.trim() || null);
+	let data = parseJsonFromElement(selector);
 	return data ? slice ? {[slice]: data} : data : {};
 }
 
