@@ -8,6 +8,7 @@ redux-utils
 
 A collection of wrappers/utilities for common functions in redux.
 
+
 Installation
 ------------
 
@@ -18,6 +19,19 @@ npm install @ultraq/redux-utils
 
 API
 ---
+
+### initialStateFromDom(selector, [slice])
+
+Create an initial state from JSON data in a DOM element.  Used for creating an
+object that is suitable for the `initialState` value of Redux's `createStore`.
+Returns the JSON data converted to an object, or an empty object if no data
+could be read.
+
+ - **selector**: a CSS selector for picking out the HTML element that contains
+   the JSON data to load.
+ - **slice**: optional, if the JSON data only represents a slice of the entire
+   state, then specify the name of the slice so that it can be set in the right
+   place.
 
 ### observe(store, select, handler)
 

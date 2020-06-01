@@ -32,15 +32,9 @@ import {equals} from '@ultraq/object-utils';
  *   be read.
  */
 export function initialStateFromDom(selector, slice) {
-	let el = document.querySelector(selector);
-	if (el && el.textContent) {
-		let jsonData = el.textContent.trim();
-		if (jsonData) {
-			let data = JSON.parse(jsonData);
-			return slice ? {[slice]: data} : data;
-		}
-	}
-	return {};
+
+	let data = JSON.parse(document.querySelector(selector)?.textContent?.trim() || null);
+	return data ? slice ? {[slice]: data} : data : {};
 }
 
 /**

@@ -15,10 +15,18 @@
  */
 
 /* eslint-env jest */
-import {observe, observeOnce} from './redux-utils';
+import {
+	initialStateFromDom,
+	observe,
+	observeOnce
+} from './redux-utils.js';
 
-import {navigate} from '@ultraq/object-utils';
+import {navigate}    from '@ultraq/object-utils';
+import h             from 'hyperscript';
+import hh            from 'hyperscript-helpers';
 import {createStore} from 'redux';
+
+const {div} = hh(h);
 
 /**
  * Tests for the redux utilities.
@@ -33,6 +41,50 @@ describe('redux-utils', () => {
 				...state,
 				...action.newState
 			} : state;
+		});
+	});
+
+	describe('#initialStateFromDom', function() {
+
+		function createTestElement(data) {
+			testDataEl = div('#test-data', data);
+			document.body.appendChild(testDataEl);
+		}
+
+		let testDataEl;
+		afterEach(function() {
+			testDataEl?.remove();
+		});
+
+		test('JSON data loaded', function() {
+			let testData = {
+				message: 'Hello!'
+			};
+			createTestElement(JSON.stringify(testData));
+			let result = initialStateFromDom('#test-data');
+			expect(result).toEqual(testData);
+		});
+
+		test('JSON data loaded into slice', function() {
+			let testData = {
+				message: 'Hello!'
+			};
+			createTestElement(JSON.stringify(testData));
+			let result = initialStateFromDom('#test-data', 'slice');
+			expect(result).toEqual(expect.objectContaining({
+				slice: testData
+			}));
+		});
+
+		test('Empty object returned when element not present', function() {
+			let result = initialStateFromDom('#test-data');
+			expect(result).toEqual({});
+		});
+
+		test('Empty object returned when element contains no content', function() {
+			createTestElement('');
+			let result = initialStateFromDom('#test-data');
+			expect(result).toEqual({});
 		});
 	});
 

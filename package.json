@@ -31,12 +31,16 @@
 		"redux": "^4.0.0"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.8.4",
-		"@babel/core": "^7.9.6",
-		"@babel/preset-env": "^7.9.6",
+		"@babel/cli": "^7.10.1",
+		"@babel/core": "^7.10.2",
+		"@babel/plugin-proposal-optional-chaining": "^7.10.1",
+		"@babel/preset-env": "^7.10.2",
+		"babel-eslint": "^10.1.0",
 		"coveralls": "^3.1.0",
 		"eslint": "^6.8.0",
 		"eslint-config-ultraq": "^2.3.3",
+		"hyperscript": "^2.0.2",
+		"hyperscript-helpers": "^3.0.3",
 		"jest": "^25.5.4",
 		"redux": "^4.0.0"
 	},
