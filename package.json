@@ -17,7 +17,7 @@
 	"main": "redux-utils.cjs.js",
 	"scripts": {
 		"lint": "eslint \"*.js\"",
-		"test": "npm run lint && jest",
+		"test": "jest",
 		"coverage": "cat ./coverage/lcov.info | coveralls",
 		"build": "npm run build:cjs && npm run build:es",
 		"build:cjs": "BABEL_ENV=cjs babel redux-utils.js --out-file redux-utils.cjs.js --source-maps",
