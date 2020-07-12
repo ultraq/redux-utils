@@ -7,5 +7,8 @@ module.exports = {
 		'html',
 		'lcov',
 		'text-summary'
+	],
+	setupFilesAfterEnv: [
+		'mock-local-storage'
 	]
 };

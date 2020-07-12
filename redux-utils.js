@@ -33,9 +33,33 @@ import {equals}               from '@ultraq/object-utils';
  *   be read.
  */
 export function initialStateFromDom(selector, slice) {
-
 	let data = parseJsonFromElement(selector);
 	return data ? slice ? {[slice]: data} : data : {};
+}
+
+/**
+ * Create an initial state from JSON data in session or local storage.  Used for
+ * creating an object that is suitable for the `initialState` value of Redux's
+ * `createStore`.
+ * 
+ * @param {Storage} storage
+ *   The storage mechanism to use, either `sessionStorage` or `localStorage`.
+ * @param {String} key
+ *   The key in storage from which to get the data from.
+ * @param {String} [slice]
+ *   If the JSON data only represents a slice of the entire state, then specify
+ *   the name of the slice so that it can be set in the right place.
+ * @return {Object}
+ *   The JSON data converted to an object, or an empty object if no data could
+ *   be read.
+ */
+export function initialStateFromStorage(storage, key, slice) {
+	let item = storage.getItem(key);
+	if (item) {
+		let data = JSON.parse(item);
+		return slice ? { [slice]: data } : data;
+	}
+	return {};
 }
 
 /**
@@ -51,7 +75,6 @@ export function initialStateFromDom(selector, slice) {
  *   A function that lets the observer unsubscribe from store changes.
  */
 export function observe(store, select, handler) {
-
 	let currentValue = select(store.getState());
 	return store.subscribe(function() {
 		let nextValue = select(store.getState());
@@ -72,7 +95,6 @@ export function observe(store, select, handler) {
  * @param {Function} handler
  */
 export function observeOnce(store, select, handler) {
-
 	let unsubscribe = observe(store, select, function(value) {
 		if (value) {
 			unsubscribe();

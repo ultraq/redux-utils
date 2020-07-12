@@ -13,26 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-const mockDomUtils = jest.genMockFromModule('@ultraq/dom-utils');
-
+/* eslint-env jest, node */
 let mockJson = null;
 
-/**
- * Mock and return the value of future calls to the `parseJsonFromElement`
- * function.
- * 
- * @param {Object} data
- * @return {Object}
- * @private
- */
-mockDomUtils.__setMockJsonFromElement = function(data) {
-	mockJson = data;
-	return data;
-}
+module.exports = {
+	...jest.genMockFromModule('@ultraq/dom-utils'),
 
-mockDomUtils.parseJsonFromElement = function(selector) {
-	return mockJson;
-}
+	/**
+	 * Mock and return the value of future calls to the `parseJsonFromElement`
+	 * function.
+	 * 
+	 * @param {Object} data
+	 * @return {Object}
+	 * @private
+	 */
+	__setMockJsonFromElement(data) {
+		mockJson = data;
+		return data;
+	},
 
-module.exports = mockDomUtils;
+	parseJsonFromElement(selector) {
+		return mockJson;
+	}
+};

@@ -18,6 +18,7 @@
 import {__setMockJsonFromElement} from '@ultraq/dom-utils';
 import {
 	initialStateFromDom,
+	initialStateFromStorage,
 	observe,
 	observeOnce
 } from './redux-utils.js';
@@ -73,6 +74,39 @@ describe('redux-utils', function() {
 		test('Empty object returned when element contains no content', function() {
 			__setMockJsonFromElement('');
 			let result = initialStateFromDom('#test-data');
+			expect(result).toEqual({});
+		});
+	});
+
+	describe('#initialStateFromStorage', function() {
+		const key = 'test';
+
+		afterEach(function() {
+			localStorage.clear();
+		});
+
+		test('JSON data loaded', function() {
+			let testData = {
+				message: 'Hello!'
+			};
+			localStorage.setItem(key, JSON.stringify(testData));
+			let result = initialStateFromStorage(localStorage, key);
+			expect(result).toEqual(testData);
+		});
+
+		test('JSON data loaded into slice', function() {
+			let testData = {
+				message: 'Hello!'
+			};
+			localStorage.setItem(key, JSON.stringify(testData));
+			let result = initialStateFromStorage(localStorage, key, 'slice');
+			expect(result).toEqual({
+				slice: testData
+			});
+		});
+
+		test('Empty object returned when item not present', function() {
+			let result = initialStateFromStorage(localStorage, key);
 			expect(result).toEqual({});
 		});
 	});
@@ -170,5 +204,4 @@ describe('redux-utils', function() {
 			expect(handler).toHaveBeenCalledTimes(1);
 		});
 	});
-
 });
