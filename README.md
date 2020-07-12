@@ -6,7 +6,8 @@ redux-utils
 [![Coverage Status](https://coveralls.io/repos/github/ultraq/redux-utils/badge.svg?branch=master)](https://coveralls.io/github/ultraq/redux-utils?branch=master)
 [![npm](https://img.shields.io/npm/v/@ultraq/redux-utils.svg?maxAge=3600)](https://www.npmjs.com/package/@ultraq/redux-utils)
 
-A collection of wrappers/utilities for common functions in redux.
+A collection of wrappers/utilities for common functions when working with
+[redux](https://redux.js.org/).
 
 
 Installation
