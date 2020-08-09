@@ -30,24 +30,24 @@
 		"prepublishOnly": "npm run build"
 	},
 	"dependencies": {
-		"@ultraq/dom-utils": "^0.3.0",
+		"@ultraq/dom-utils": "^0.4.0",
 		"@ultraq/object-utils": "^2.0.1"
 	},
 	"peerDependencies": {
-		"redux": "^4.0.0"
+		"redux": "4"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.10.1",
 		"@babel/core": "^7.10.2",
 		"@babel/preset-env": "^7.10.2",
 		"coveralls": "^3.1.0",
-		"eslint": "^6.8.0",
+		"eslint": "^7.6.0",
 		"eslint-config-ultraq": "^2.3.3",
-		"jest": "^25.5.4",
+		"jest": "^26.2.2",
 		"mock-local-storage": "^1.1.12",
 		"redux": "^4.0.0"
 	},
 	"engines": {
-		"node": ">=10.0.0"
+		"node": ">=10"
 	}
 }
