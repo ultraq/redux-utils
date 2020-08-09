@@ -5,6 +5,7 @@ redux-utils
 [![Build Status](https://travis-ci.com/ultraq/redux-utils.svg?branch=master)](https://travis-ci.com/ultraq/redux-utils)
 [![Coverage Status](https://coveralls.io/repos/github/ultraq/redux-utils/badge.svg?branch=master)](https://coveralls.io/github/ultraq/redux-utils?branch=master)
 [![npm](https://img.shields.io/npm/v/@ultraq/redux-utils.svg?maxAge=3600)](https://www.npmjs.com/package/@ultraq/redux-utils)
+[![Bundlephobia minified size](https://img.shields.io/bundlephobia/min/@ultraq/redux-utils)](https://bundlephobia.com/result?p=@ultraq/redux-utils)
 
 A collection of wrappers/utilities for common functions when working with
 [redux](https://redux.js.org/).
