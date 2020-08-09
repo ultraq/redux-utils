@@ -15,7 +15,6 @@
  */
 
 /* eslint-env jest */
-import {__setMockJsonFromElement} from '@ultraq/dom-utils';
 import {
 	initialStateFromDom,
 	initialStateFromStorage,
@@ -24,6 +23,7 @@ import {
 } from './redux-utils.js';
 
 import {navigate}    from '@ultraq/object-utils';
+import {JSDOM}       from 'jsdom';
 import {createStore} from 'redux';
 
 /**
@@ -44,23 +44,31 @@ describe('redux-utils', function() {
 
 	describe('#initialStateFromDom', function() {
 
-		afterEach(function() {
-			__setMockJsonFromElement(null);
-		});
-
 		test('JSON data loaded', function() {
-			let testData = __setMockJsonFromElement({
+			let testData = {
 				message: 'Hello!'
-			});
-			let result = initialStateFromDom('#test-data');
+			};
+			let doc = new JSDOM(`
+				<!DOCTYPE html>
+				<div id="test-data">
+					${JSON.stringify(testData)}
+				</div>
+			`).window.document;
+			let result = initialStateFromDom('#test-data', null, doc);
 			expect(result).toEqual(testData);
 		});
 
 		test('JSON data loaded into slice', function() {
-			let testData = __setMockJsonFromElement({
+			let testData = {
 				message: 'Hello!'
-			});
-			let result = initialStateFromDom('#test-data', 'slice');
+			};
+			let doc = new JSDOM(`
+				<!DOCTYPE html>
+				<div id="test-data">
+					${JSON.stringify(testData)}
+				</div>
+			`).window.document;
+			let result = initialStateFromDom('#test-data', 'slice', doc);
 			expect(result).toEqual(expect.objectContaining({
 				slice: testData
 			}));
@@ -72,8 +80,13 @@ describe('redux-utils', function() {
 		});
 
 		test('Empty object returned when element contains no content', function() {
-			__setMockJsonFromElement('');
-			let result = initialStateFromDom('#test-data');
+			let doc = new JSDOM(`
+				<!DOCTYPE html>
+				<div id="test-data">
+					${JSON.stringify('')}
+				</div>
+			`).window.document;
+			let result = initialStateFromDom('#test-data', null, doc);
 			expect(result).toEqual({});
 		});
 	});

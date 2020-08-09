@@ -28,12 +28,15 @@ import {equals}               from '@ultraq/object-utils';
  * @param {String} [slice]
  *   If the JSON data only represents a slice of the entire state, then specify
  *   the name of the slice so that it can be set in the right place.
+ * @param {Document} [scope=document]
+ *   The DOM tree to search for the initial state.  Defaults to the current
+ *   document.
  * @return {Object}
  *   The JSON data converted to an object, or an empty object if no data could
  *   be read.
  */
-export function initialStateFromDom(selector, slice) {
-	let data = parseJsonFromElement(selector);
+export function initialStateFromDom(selector, slice, scope = document) {
+	let data = parseJsonFromElement(selector, scope);
 	return data ? slice ? {[slice]: data} : data : {};
 }
 

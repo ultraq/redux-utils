@@ -22,7 +22,7 @@ npm install @ultraq/redux-utils
 API
 ---
 
-### initialStateFromDom(selector, [slice])
+### initialStateFromDom(selector, [slice], [scope = document])
 
 Create an initial state from JSON data in a DOM element.  Used for creating an
 object that is suitable for the `initialState` value of Redux's `createStore`.
@@ -34,6 +34,8 @@ could be read.
  - **slice**: optional, if the JSON data only represents a slice of the entire
    state, then specify the name of the slice so that it can be set in the right
    place.
+ = **scope**: optional, the DOM tree to search for the initial state.  Defaults
+   to the current document.
 
 ### initialStateFromStorage(storage, key, [slice])
 
