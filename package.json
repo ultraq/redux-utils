@@ -1,6 +1,6 @@
 {
 	"name": "@ultraq/redux-utils",
-	"version": "0.4.1",
+	"version": "0.4.2",
 	"description": "A collection of wrappers/utilities for common functions when working with redux",
 	"author": "Emanuel Rabina <emanuelrabina@gmail.com> (http://www.ultraq.net.nz/)",
 	"license": "Apache-2.0",
@@ -32,7 +32,7 @@
 	"dependencies": {
 		"@babel/runtime": "^7.11.2",
 		"@ultraq/dom-utils": "^0.4.0",
-		"@ultraq/object-utils": "^2.0.1"
+		"@ultraq/object-utils": "^2.1.0"
 	},
 	"peerDependencies": {
 		"redux": "4"
