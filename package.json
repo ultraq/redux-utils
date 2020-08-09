@@ -19,6 +19,7 @@
 	],
 	"module": "redux-utils.es.js",
 	"main": "redux-utils.cjs.js",
+	"sideEffects": false,
 	"scripts": {
 		"lint": "eslint \"*.js\"",
 		"test": "npm run lint && jest",
@@ -26,7 +27,7 @@
 		"build": "npm run build:cjs && npm run build:es",
 		"build:cjs": "BABEL_ENV=cjs babel redux-utils.js --out-file redux-utils.cjs.js --source-maps",
 		"build:es": "BABEL_ENV=es babel redux-utils.js --out-file redux-utils.es.js --source-maps",
-		"prepublish": "npm run build"
+		"prepublishOnly": "npm run build"
 	},
 	"dependencies": {
 		"@ultraq/dom-utils": "^0.3.0",
